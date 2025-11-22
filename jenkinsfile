@@ -1,10 +1,6 @@
 pipeline {
     agent any
     
-    tools {
-        nodejs 'nodejs-18'
-    }
-        
     stages {
         stage('Checkout') {
             steps {
@@ -39,20 +35,6 @@ pipeline {
                     reportName: 'Mocha Test Report'
                 ]
             ])
-        }
-        success {
-            emailext (
-                subject: "Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "report: ${env.BUILD_URL}",
-                to: "team@example.com"
-            )
-        }
-        failure {
-            emailext (
-                subject: "Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "report: ${env.BUILD_URL}",
-                to: "team@example.com"
-            )
         }
     }
 }
