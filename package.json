@@ -1,0 +1,28 @@
+{
+  "name": "mocha-test-repo",
+  "version": "0.1.0",
+  "description": "Small test repository using Mocha, Chai and Supertest",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "mocha --recursive --reporter spec",
+    "test:ci": "mocha test/**/*.js --reporter mocha-multi-reporters --reporter-options configFile=.mocha-multi-reporters.json",
+    "test:report": "mocha --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-results",
+    "test:watch": "mocha --watch --watch-files \"src/**/*.js\",\"test/**/*.js\" --recursive",
+    "coverage": "nyc npm test",
+    "perf": "k6 run test/pf/**/*.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "k6": "^0.0.0",
+    "mocha-junit-reporter": "^2.2.1",
+    "mocha-multi-reporters": "^1.5.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.4",
+    "nyc": "^15.1.0",
+    "supertest": "^6.3.3"
+  }
+}

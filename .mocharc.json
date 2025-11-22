@@ -1,0 +1,7 @@
+{
+  "reporter": "spec",
+  "recursive": true,
+  "extension": ["js"],
+  "timeout": 5000,
+  "watch-files": ["src/**/*.js", "test/**/*.js"]
+}
