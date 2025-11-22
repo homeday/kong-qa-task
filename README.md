@@ -18,3 +18,5 @@ Files:
 - `test/items.perf.test.js` — performance tests
 - `test/kong.js` — environment setting
 
+Report:
+one sample report is in `reports_sample` folder
