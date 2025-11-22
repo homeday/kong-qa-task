@@ -10,6 +10,8 @@ npm install
 npm test
 # get report
 npm test:report
+# for ci report
+npm test:ci
 ```
 
 Files:
@@ -18,3 +20,5 @@ Files:
 - `test/items.perf.test.js` — performance tests
 - `test/kong.js` — environment setting
 
+Report:
+one sample report is in `reports_sample` folder

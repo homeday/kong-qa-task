@@ -1,17 +1,6 @@
 pipeline {
     agent any
-    
-    tools {
-        nodejs 'nodejs-18'
-    }
-        
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
@@ -24,35 +13,20 @@ pipeline {
             }
         }
     }
-    
     post {
         always {
             junit 'reports/test-results.xml'
-
+            
             publishHTML([
                 target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'report',
+                    reportDir: 'reports',
                     reportFiles: 'test-results.html',
                     reportName: 'Mocha Test Report'
                 ]
             ])
-        }
-        success {
-            emailext (
-                subject: "Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "report: ${env.BUILD_URL}",
-                to: "team@example.com"
-            )
-        }
-        failure {
-            emailext (
-                subject: "Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "report: ${env.BUILD_URL}",
-                to: "team@example.com"
-            )
         }
     }
 }

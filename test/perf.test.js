@@ -16,7 +16,7 @@ describe('API gateway Performance Tests', function() {
                 .get(items_sub_path)
                 .set('Authorization', basic_auth)
                 .expect(200).catch(err => {
-                    console.error("Getting failed:", id, err.message);
+                    console.error("Getting failed:", err.message);
                     throw err;
                 })
             promises.push(promise);
