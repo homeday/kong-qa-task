@@ -10,6 +10,8 @@ npm install
 npm test
 # get report
 npm test:report
+# for ci report
+npm test:ci
 ```
 
 Files:
